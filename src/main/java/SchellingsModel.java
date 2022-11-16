@@ -53,7 +53,7 @@ public class SchellingsModel {
         checkHappinessForAll();
     }
     public void printTable() throws IOException {
-        printTable(new File("D:\\java_new\\modelSchelling\\model.xlsx"));
+        printTable(new File("C:\\Users\\igor-\\IdeaProjects\\modelSchelling\\model.xlsx"));
     }
 
     public void printTable(File file) throws IOException {
@@ -353,7 +353,7 @@ public class SchellingsModel {
     }
 
     public void simulate(int max, int step) throws IOException {
-        printTable(new File("D:\\java_new\\modelSchelling\\" + "k0.xlsx"));
+        printTable(new File("C:\\Users\\igor-\\IdeaProjects\\modelSchelling\\" + "k0.xlsx"));
 
         int k = 0;
         while(unhappyPositions.size() > 0 && k <= max){
@@ -362,19 +362,18 @@ public class SchellingsModel {
             table[emptyPositions.getRow()][emptyPositions.getColumn()] = table[unhappyPosition.getRow()][unhappyPosition.getColumn()];
             table[unhappyPosition.getRow()][unhappyPosition.getColumn()] = null;
 
-            unhappyPositions.remove(unhappyPosition);
+            unhappyPositions.clear();
             emptySpace.remove(emptyPositions);
             emptySpace.add(unhappyPosition);
-            numberOfUnhappy--;
-            checkHappinessForCell(emptyPositions.getRow(), emptyPositions.getColumn());
+            checkHappinessForAll();
 
             k++;
             if(k % step == 0){
-                printTable(new File("D:\\java_new\\modelSchelling\\k" + k + ".xlsx"));
+                printTable(new File("C:\\Users\\igor-\\IdeaProjects\\modelSchelling\\k" + k + ".xlsx"));
             }
         }
 
-        printTable(new File("D:\\java_new\\modelSchelling\\k" + k + ".xlsx"));
+        printTable(new File("C:\\Users\\igor-\\IdeaProjects\\modelSchelling\\k" + k + ".xlsx"));
     }
 
 }
